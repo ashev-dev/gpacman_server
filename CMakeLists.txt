@@ -15,11 +15,12 @@ set(Boost_USE_MULTITHREADED ON)
 
 find_package(Boost COMPONENTS program_options thread REQUIRED)
 
-
 include_directories(${Boost_INCLUDE_DIRS})
+
+find_package(SFML 2.5 COMPONENTS graphics REQUIRED)
 
 add_executable(gpacman_server ${SOURCES} ${HEADERS})
 
 target_include_directories (gpacman_server PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 
-target_link_libraries(gpacman_server ${Boost_LIBRARIES})
+target_link_libraries(gpacman_server   sfml-graphics ${Boost_LIBRARIES})
