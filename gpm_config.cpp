@@ -34,11 +34,11 @@ void gpm_config::load_config() {
     boost::property_tree::ptree pt;
     boost::property_tree::read_json(ss, pt);
 
-    port = pt.get<uint32_t>("port", 8080);
+    _port = pt.get<uint32_t>("port", 8080);
     if (pt.count("port") == 0) {
       logging::DEBUG("Using default port 8080");
     }
-    logging::INFO("Using port " + std::to_string(port));
+    logging::INFO("Using port " + std::to_string(_port));
 
     threads = pt.get<uint32_t>("threads", 4);
     if (pt.count("threads") == 0) {
@@ -112,3 +112,5 @@ gpm_config::gpm_config(int argc, char *argv[]) {
     logging::ERROR(ex.what());
   }
 }
+
+unsigned short gpm_config::port() { return _port; }

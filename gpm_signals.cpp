@@ -1,8 +1,10 @@
 #include "gpm_signals.hpp"
-#include "gpm_logging.hpp"
+
 #include <csignal>
 #include <iostream>
 #include <queue>
+
+#include "gpm_logging.hpp"
 
 int gpm_signals::g_signal = 0;
 std::queue<int> gpm_signals::g_signals;
@@ -33,11 +35,10 @@ int gpm_signals::get_signal() {
 void gpm_signals::signal_handler(int signum) { gpm_signals::g_signal = signum; }
 
 void gpm_signals::setup_signal_handler() {
-  std::list<int> sys_signals = {SIGINT,  SIGILL, SIGABRT, SIGFPE,  SIGSEGV,
-                                SIGTERM, SIGHUP, SIGQUIT, SIGTRAP, /*SIGKILL,*/
+  std::list<int> sys_signals = {SIGINT,  SIGILL, SIGABRT, SIGFPE, SIGSEGV,
+                                SIGTERM, SIGHUP, SIGQUIT, /*SIGTRAP, SIGKILL, */
                                 SIGPIPE, SIGALRM};
   for (const int &sig : sys_signals) {
-
     if (signal(sig, gpm_signals::signal_handler) == SIG_ERR) {
       throw SignalException("Error setting up signal handler");
     } else {
