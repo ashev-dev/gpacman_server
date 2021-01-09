@@ -22,6 +22,7 @@ find_package(SFML 2.5 COMPONENTS graphics REQUIRED)
 add_executable(gpacman_server ${SOURCES} ${HEADERS})
 
 configure_file(gpacman_server.conf gpacman_server.conf COPYONLY)
+configure_file(README.md README.md COPYONLY)
 
 target_include_directories (gpacman_server PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 

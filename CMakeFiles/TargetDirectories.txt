@@ -1,0 +1,3 @@
+/home/as/QT/gpacman_server/CMakeFiles/rebuild_cache.dir
+/home/as/QT/gpacman_server/CMakeFiles/edit_cache.dir
+/home/as/QT/gpacman_server/CMakeFiles/gpacman_server.dir
