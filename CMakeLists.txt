@@ -38,4 +38,4 @@ configure_file(README.md README.md COPYONLY)
 
 target_include_directories (gpacman_server PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 
-target_link_libraries(gpacman_server ${SFML_LIBRARIES} ${Boost_LIBRARIES} stdc++fs)
+target_link_libraries(gpacman_server ${SFML_LIBRARIES} ${Boost_LIBRARIES} stdc++fs boost_program_options boost_thread)
