@@ -4,20 +4,20 @@
 #include <boost/property_tree/json_parser.hpp>
 #include <boost/property_tree/ptree.hpp>
 #include <exception>
-#include <filesystem>
+#include <experimental/filesystem>
 #include <fstream>
 #include <iostream>
 #include <sstream>
 #include <vector>
 
 #include "gpm_logging.hpp"
-
+namespace fs = std::experimental::filesystem;
 void gpm_config::load_config() {
   try {
     logging::DEBUG("Starting argument parsing");
     config_file = vm["file"].as<std::string>();
 
-    if (std::filesystem::exists(config_file)) {
+    if (fs::exists(config_file)) {
       logging::INFO("Using " + config_file + " as config");
     } else {
       throw std::invalid_argument("Config file not found");
